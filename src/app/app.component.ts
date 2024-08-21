@@ -13,6 +13,7 @@ import { SharedService } from './shared.service';
 import { AuthService } from './auth.service';
 import { User } from 'firebase/auth'; // Adjust based on your Firebase import
 import { Router } from '@angular/router';
+import { TranslationService } from './translation.service';
 
 @Component({
   selector: 'app-root',
@@ -38,9 +39,10 @@ export class AppComponent implements OnInit{
   isLoggedIn=false;
   authService=inject(AuthService);
   
-  constructor(public sharedService: SharedService,private router: Router) {}  // Inject SharedService
+  constructor(public sharedService: SharedService,private router: Router,public translationService: TranslationService) {}  // Inject SharedService
 
   ngOnInit(): void {
+    this.translationService.loadTranslations('en'); // Default language
 
     this.authService.user$.subscribe((userInfo: User | null) => {
       
@@ -64,5 +66,9 @@ export class AppComponent implements OnInit{
     this.router.navigate(['/login']);
 
   }
+  switchLanguage(event: Event) {
+    const selectedLanguage = (event.target as HTMLSelectElement).value;
 
+    this.translationService.switchLanguage(selectedLanguage);
+  }
 }

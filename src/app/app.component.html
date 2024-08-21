@@ -3,30 +3,36 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="btn btn-outline-primary w-120 mb-4"> 
-                    <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" class="nav-link text-white thick-text">Home</a>
+                    <a [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/" class="nav-link text-white thick-text">
+                        {{ translationService.translate('Home') }}
+                    </a>
                 </li>
                 
                
                 <li class="btn btn-outline-primary w-120 mb-4">
-                    <a routerLinkActive="active" routerLink="/about" class="nav-link text-white thick-text">About Us</a>
+                    <a routerLinkActive="active" routerLink="/about" class="nav-link text-white thick-text">
+                        {{ translationService.translate('About US') }}
+                    </a>
                 </li>
                 <!-- Products and Profile Links -->
                 <li *ngIf="isLoggedIn" class="btn btn-outline-primary w-120 mb-4">
-                    <a routerLinkActive="active" routerLink="/products" class="nav-link text-white thick-text">Products</a>
+                    <a routerLinkActive="active" routerLink="/products" class="nav-link text-white thick-text">
+                        {{ translationService.translate('Products') }}
+                    </a>
                 </li>
                 <li *ngIf="isLoggedIn" class="btn btn-outline-primary w-120 mb-4">
                     <a routerLinkActive="active" routerLink="/profile" class="nav-link text-white thick-text">
-                        Profile
+                        {{ translationService.translate('Profile') }}
                     </a>
                 </li>
                 <li *ngIf="!isLoggedIn" class="btn btn-outline-primary w-120 mb-4">
                     <a routerLinkActive="active" routerLink="/register" class="nav-link text-white thick-text">
-                        Register
+                        {{ translationService.translate('Register') }}
                     </a>
                 </li>
                 <li *ngIf="!isLoggedIn" class="btn btn-outline-primary w-120 mb-4">
                     <a routerLinkActive="active" routerLink="/login" class="nav-link text-white thick-text">
-                        Login
+                        {{ translationService.translate('Login') }}
                     </a>
                 </li>
                 <li *ngIf="isLoggedIn" class="btn btn-outline-primary w-120 mb-4">
@@ -35,12 +41,32 @@
                     routerLinkActive="active" 
                     style="border: none;background: border-box;"
                     class="nav-link text-white thick-text">
-                        logout
+                    {{ translationService.translate('logout') }}
                     </button>
                 </li>
-                <!-- <li class="btn btn-outline-primary w-120 mb-4">
-                    <a routerLinkActive="active" routerLink="/register" class="nav-link text-white thick-text">Register</a>
-                </li> -->
+
+
+                <li class="btn btn-outline-primary w-120 mb-4">
+                        <!-- <button  style="border: none;background: border-box;"
+                        class="nav-link text-white thick-text"
+                         (click)="switchLanguage('en')">
+                         <img src="/uk.png" style="width: 30px;height: 20px;" >
+                        </button>
+                        <button  style="border: none;background: border-box;"
+                        class="nav-link text-white thick-text"
+                         (click)="switchLanguage('es')">
+                         
+                        </button> -->
+                        <select
+                        class="nav-link thick-text bg-custom text-white"
+                        style="border: none;"
+                        (change)="switchLanguage($event)">
+                            <option value="en">EN</option>
+                            <option value="es">SP</option>
+                        </select>
+                        
+                    
+                </li>
             </ul>
         </div>
     </div>
