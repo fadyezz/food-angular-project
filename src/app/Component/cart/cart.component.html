@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Your Cart</h2>
+  
+    <div *ngIf="cartItems.length === 0" class="text-center">
+      <p class="lead">Your cart is empty.</p>
+      <button (click)="goToProducts()" class="btn btn-primary btn-lg">Go to Products</button>
+    </div>
+  
+    <div *ngFor="let item of cartItems" class="card mb-3 shadow-sm">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="item.image" class="img-fluid rounded-start" alt="{{ item.title }}" />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">{{ item.title }}</h3>
+            <p class="card-text"><strong>Ingredients:</strong> {{ item.ingredients.join(', ') }}</p>
+            <p class="card-text"><strong>Price:</strong> {{ item.caloriesPerServing }}</p>
+            <button (click)="removeFromCart(item)" class="btn btn-danger">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="cartItems.length > 0" class="d-flex justify-content-between mt-4">
+      <div>
+        <h4>Total Price: {{ getTotalPrice() }} EG</h4>
+      </div>
+    <div>
+  
+    <div *ngIf="cartItems.length > 0" class="d-flex justify-content-between mt-4">
+      <button (click)="clearCart()" class="btn btn-warning">Clear Cart</button>
+      <button (click)="goToProducts()" class="btn btn-primary">Continue Shopping</button>
+    </div>
+  </div>
+  

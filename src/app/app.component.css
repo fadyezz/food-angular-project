@@ -1,0 +1,8 @@
+.bg-custom {
+    background-color: rgb(65, 65, 145) /* Custom orange color */
+}
+
+/* styles.css or your component's CSS file */
+.thick-text {
+    font-weight: 660; /* Maximum font weight */
+}   

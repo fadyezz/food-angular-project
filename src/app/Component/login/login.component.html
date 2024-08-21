@@ -1,0 +1,103 @@
+<!--<body class="bg-info text-dark"> 
+  <div class="container mt-4">
+    <h1 class="text-center">Login</h1>
+    <form class="mt-4"> 
+      <div class="form-group">
+        <input name="username" class="form-control" placeholder="Username" required> 
+      </div>
+      <div class="form-group">
+        <input name = "password" type="password" class="form-control" placeholder="Password" required> 
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</body>-->
+
+
+<!--<div class="container mt-5">
+    <h2>Change Email Address</h2>
+    <form id="changeEmailForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+            <small class="form-text text-muted">The required user name may only be a series of alphabetical characters.</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+            <small class="form-text text-muted">The required email address may not include any special characters other than the &#64; sign.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Change</button>
+    </form>
+</div>-->
+
+<!--<div class="container mt-4">
+  <div class="border rounded p-4 shadow-lg" style="max-width: 500px; margin: auto; margin-bottom: 2rem;"> 
+    <h2 class="text-center">Please Sign In</h2>
+    <form (ngSubmit)="onSubmit()"  #changeEmailForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="username" 
+          name="username" 
+          [(ngModel)]="username" 
+          #usernameInput="ngModel" 
+          required 
+          pattern="[A-Za-z]+">
+        <small class="form-text text-muted">The required user name may only be a series of alphabetical characters.</small>
+        <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="text-danger">
+          <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
+          <div *ngIf="usernameInput.errors?.['pattern']">Only alphabetical characters are allowed.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email" 
+          name="email" 
+          [(ngModel)]="email" 
+          #emailInput="ngModel" 
+          required 
+          email>
+        <small class="form-text text-muted">The required email address may not include any special characters other than the &#64; sign.</small>
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
+          <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+          <div *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="changeEmailForm.invalid">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="submitted">
+    <h3>Submitted Information:</h3> 
+    <p>Name: {{ username}}</p>
+    <p>Email: {{email }}</p>
+</div>
+</div>-->
+<div class="container"> 
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+  </form>
+  @if (errorMessage) {
+    <div class="alert alert-danger">{{errorMessage}}</div>
+  }
+</div>
+
+
+
+
+
+

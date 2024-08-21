@@ -1,0 +1,31 @@
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-image) no-repeat center center; /* White background with low opacity */
+    z-index: 0; /* Behind the content */
+}
+
+.position-relative {
+    position: relative; /* To allow absolute positioning of the overlay */
+}
+
+.z-index-1 {
+    z-index: 1; /* Ensure the text is above the overlay */
+}
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

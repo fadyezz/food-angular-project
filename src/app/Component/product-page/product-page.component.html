@@ -1,0 +1,36 @@
+<div class="product-page container mt-5">
+    <h1 class="text-center mb-4">Recipe List</h1>
+  
+    <div class="input-group mb-4">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Search recipes..."
+        class="form-control"
+      />
+      <button class="btn btn-outline-secondary" type="button" (click)="filteredProducts()">
+        Search
+      </button>
+      
+    </div>
+    <div class="text-center mt-4">
+        <button (click)="viewCart()" class="btn btn-secondary">View Cart</button>
+      </div>
+      <br/>
+  
+    <div class="row"> 
+      <div *ngFor="let recipe of filteredProducts()" class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <img [src]="recipe.image" class="card-img-top" alt="{{ recipe.title }}" />
+          <div class="card-body">
+            <h5 class="card-title">{{ recipe.name }}</h5>
+            <p class="card-text" style="height: 100px;"><strong>Ingredients:</strong> {{ recipe.ingredients.join(', ').substring(0,150) }}</p>
+            <p class="card-text"><strong>Price:</strong> {{ recipe.caloriesPerServing }}</p>
+            <button (click)="addToCart(recipe)" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  

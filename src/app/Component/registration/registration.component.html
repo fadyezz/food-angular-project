@@ -1,0 +1,126 @@
+<!--<div class="container mt-4">
+  <h1 class="text-center">Register</h1>
+  <form class="mt-4">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      
+      <input type="email" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <select class="form-control" required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="file" class="form-control" placeholder="Image" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>-->
+
+<div class="container mt-3">
+  <div class="border rounded p-4 shadow-lg" style="max-width: 500px; margin: auto; margin-bottom: 2rem;"> <!-- Added margin-bottom -->
+      <h2 class="text-center">Create an account</h2>
+      <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input 
+                  type="text" 
+                  class="form-control" 
+                  id="username" 
+                  name="username" 
+                  [(ngModel)]="_shared.UserInfoData.username" 
+                  #usernameInput="ngModel" 
+                  required 
+                  pattern="[A-Za-z]+">
+              <small class="form-text text-muted">The required user name may only be a series of alphabetical characters.</small>
+              <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="text-danger">
+                  <div *ngIf="usernameInput.errors?.['required']">Username is required.</div>
+                  <div *ngIf="usernameInput.errors?.['pattern']">Only alphabetical characters are allowed.</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input 
+                  type="password" 
+                  class="form-control" 
+                  id="password" 
+                  name="password" 
+                  [(ngModel)]="_shared.UserInfoData.password" 
+                  #passwordInput="ngModel" 
+                  required 
+                  minlength="6">
+              <small class="form-text text-muted">Password must be at least 6 characters long.</small>
+              <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
+                  <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
+                  <div *ngIf="passwordInput.errors?.['minlength']">Password must be at least 6 characters long.</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                  type="email" 
+                  class="form-control" 
+                  id="email" 
+                  name="email" 
+                  [(ngModel)]="_shared.UserInfoData.email" 
+                  #emailInput="ngModel" 
+                  required 
+                  email>
+              <small class="form-text text-muted">The required email address may not include any special characters other than the &#64; sign.</small>
+              <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
+                  <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+                  <div *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label for="gender">Gender</label>
+              <select 
+                  class="form-control" 
+                  id="gender" 
+                  name="gender" 
+                  [(ngModel)]="_shared.UserInfoData.gender" 
+                  #genderInput="ngModel" 
+                  required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                 
+              </select>
+              <div *ngIf="genderInput.invalid && (genderInput.dirty || genderInput.touched)" class="text-danger">
+                  <div *ngIf="genderInput.errors?.['required']">Gender is required.</div>
+              </div>
+          </div>
+
+          <!-- <div class="form-group">
+              <label for="file">Upload File</label>
+              <input 
+                  type="file" 
+                  class="form-control-file" 
+                  id="file" 
+                  name="file" 
+                  (change)="onFileChange($event)">
+              <small class="form-text text-muted">Upload your profile picture or document.</small>
+          </div> -->
+
+          <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid" (click)="add()">Register</button>
+      </form>
+      
+  @if (errorMessage) {
+    <div class="alert alert-danger">{{errorMessage}}</div>
+  }
+  </div>
+</div>
+
+
